@@ -54,3 +54,14 @@ spec:
       - name: credentials
         secret:
           secretName: mariadb-credentials
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: database
+spec:
+  ports:
+    - port: 3306
+  selector:
+    tier: backend
+    role: database
