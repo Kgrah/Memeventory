@@ -1,20 +1,34 @@
 <template>
   <div class="sidenav">
     <div class="side-nav">
+      <ul>
+        <div v-for="item in items">
+          <div>
+            <router-view
+            class="nav-item"
+            v-bind:title="item">
+            </router-view>
+          </div>
+        </div>
+      </ul>
       <router-view></router-view>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { Vue, Component } from 'vue-property-decorator'
+import { Vue, Component, Provide } from 'vue-property-decorator'
 
-@Component
-class SideBar extends Vue {
+@Component({
+})
+export default class SideBar extends Vue {
+  public items: string[];
 
+  constructor() {
+    super();
+    this.items = [ 'Dashboard', 'Collections', 'Profile', 'Settings' ];
+  }
 }
-
-export default SideBar;
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
@@ -32,19 +46,7 @@ export default SideBar;
     padding-top: 60px;
     box-shadow: 1.5px 1.5px 2px 1.5px #ccc;
 }
-img {
-  float: left;
-}
-a {
-    display: inline;
-    font-family: 'Roboto', sans-serif;
-    padding: 8px 8px 8px 32px;
-    text-decoration: none;
-    font-size: 25px;
-    color: grey;
-    transition: 0.3s;
-    text-align: left;
-    box-shadow: 0px 0px 0px 0px #ccc;
-    float: left;
+nav-item {
+  float:left;
 }
 </style>
