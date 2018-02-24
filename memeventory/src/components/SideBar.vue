@@ -1,29 +1,52 @@
 <template>
-  <div class="hello">
-    <table>
-      <tr>Hey there</tr>
-    </table>
+  <div class="sidenav">
+    <div class="side-nav">
+      <ul>
+        <div v-for="item in items">
+          <div>
+            <router-view
+            class="nav-item"
+            v-bind:title="item">
+            </router-view>
+          </div>
+        </div>
+      </ul>
+      <router-view></router-view>
+    </div>
   </div>
 </template>
 
 <script lang="ts">
-import { Vue, Component } from 'vue-property-decorator'
+import { Vue, Component, Provide } from 'vue-property-decorator'
 
-@Component
+@Component({
+})
 export default class SideBar extends Vue {
+  public items: string[];
 
+  constructor() {
+    super();
+    this.items = [ 'Dashboard', 'Collections', 'Profile', 'Settings' ];
+  }
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-tr {
-  width: 100 px;
-  height: 30px;
+.side-nav {
+    height: 100%;
+    width: 200px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color:white;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+    box-shadow: 1.5px 1.5px 2px 1.5px #ccc;
 }
-
-table {
-  border: 2px solid;
-  box-shadow: lightgrey;
+nav-item {
+  float:left;
 }
 </style>
