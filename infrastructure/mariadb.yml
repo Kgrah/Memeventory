@@ -3,9 +3,54 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: mariadb-data
+  labels:
+    tier: backend
+    role: database
 spec:
   accessModes:
     - ReadWriteOnce
   resources:
     requests:
       storage: 10Gi
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mariadb
+  labels:
+    tier: backend
+    role: database
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      tier: backend
+      role: database
+  template:
+    metadata:
+      labels:
+        tier: backend
+        role: database
+    spec:
+      containers:
+      - name: database
+        image: mariadb:10.3
+        env:
+        - name: MYSQL_ROOT_PASSWORD_FILE
+          value: /run/secrets/mysql-root
+        - name: MYSQL_USER_FILE
+          value: /run/secrets/user
+        - name: MYSQL_PASSWORD_FILE
+          value: /run/secrets/password
+        volumeMounts:
+        - mountPath: /var/lib/mysql
+          name: persistent-data
+        - mountPath: /run/secrets
+          name: credentials
+      volumes:
+      - name: persistent-data
+        persistentVolumeClaim:
+          claimName: mariadb-data
+      - name: credentials
+        secret:
+          secretName: mariadb-credentials
