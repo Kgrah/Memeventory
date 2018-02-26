@@ -11,5 +11,6 @@ In the Future:
 Google tag management to classify images into meme categories
 <br/>
 Tensorflow/Keras Image classification to automatically tag images
+<br/>
 
 Memeventory's infrastructure relies on Kubernetes and will be served by GCP machines
