@@ -1,4 +1,4 @@
-# Memeventory
+# Memeventory (WIP)
 Personalized shareable meme collections
 
 Memeventory is comprised of two applications:
