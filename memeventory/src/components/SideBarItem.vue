@@ -19,16 +19,15 @@ export default class SideBarItem extends Vue {
 }
 </script>
 
-<style>
+<style scoped>
 .sidebaritem {
-    width: 300px;
-    padding-bottom: 20px;
+    width: 100%;
+    margin: auto;
 }
 img {
-    margin: auto;
     vertical-align: middle;
 }
-a { 
+a {
     font-family: 'Roboto', sans-serif;
     text-decoration: none;
     font-size: 18px;

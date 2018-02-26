@@ -1,9 +1,6 @@
 <template>
   <div id="app">
-    <div>
-      <h1 style="color: Grey;">MEMEVENTORY</h1>
-    </div>
-    <router-view/>
+    <router-view></router-view>
   </div>
 </template>
 
@@ -18,6 +15,11 @@ export default class App extends Vue {
 
 <style>
 #app {
+  width: 99.8%;
+  margin: auto;
+  z-index: 10;
+  position: relative;
+  box-shadow: 1.5px 1.5px 2px 1.5px #ccc;
   font-family: 'Roboto', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
