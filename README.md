@@ -4,7 +4,7 @@ Personalized shareable meme collections
 Memeventory is comprised of two applications:
 
 1. Frontend: single page application built in Vue and TypeScript that displays data pulled from the backend API
-2. Backend: REST api Built in Go, Revel and MariaDB
+2. Backend: Built in Go, Revel and MariaDB
 
 In the Future: 
 <br/>
